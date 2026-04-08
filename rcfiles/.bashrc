@@ -31,6 +31,8 @@ if [ -f /etc/profile.d/git-prompt.sh ]; then
   . /etc/profile.d/git-prompt.sh
 elif [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
   . /usr/share/git-core/contrib/completion/git-prompt.sh
+elif [ -f ~/.git-prompt.sh ]; then
+  . ~/.git-prompt.sh
 fi
 
 export GIT_PS1_SHOWDIRTYSTATE=1
