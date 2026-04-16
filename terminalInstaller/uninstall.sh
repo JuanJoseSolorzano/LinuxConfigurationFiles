@@ -1,14 +1,36 @@
 #!/bin/bash
 
-# REMOVE KITTY
-echo "-----------------------------------------------"
-echo " > Removing Kitty Terminal"
-echo "-----------------------------------------------"
-sudo apt purge --auto-remove kitty -y
-sudo apt autoremove -y
-sudo apt autoclean -y
-rm -rf ~/.config/kitty
-sleep 3
+#Author: Juan Jose Solorzano
+#Description: This script uninstalls terminal settings and configurations, 
+#             including Powerlevel10k, Hack Nerd Fonts, and various dependencies.
+# mail: juanjose.solorzano.c@gmail.com
+
+packages=("git" "kitty"  "zsh" "zsh-syntax-highlighting" "zsh-common" "zsh-autosuggestions" "lsd")
+
+for package in "${packages[@]}"; do
+    if dpkg -s "$package" &>/dev/null; then
+        echo "-----------------------------------------------"
+        echo "[*] Removing $package..."
+        echo "-----------------------------------------------"
+        sudo apt purge --auto-remove "$package" -y
+        sudo apt autoremove -y
+        sudo apt autoclean -y
+        echo "------------------------------------------------------------"
+        echo "[+] - $package removed"
+        sleep 2
+        if [[ "$package" == "kitty" ]]; then
+            sudo rm -rf ~/.config/kitty
+        elif [[ "$package" == "zsh" ]]; then
+            sudo rm -rf /usr/local/share/zsh
+            sudo rm -f /usr/local/bin/zsh
+            sudo rm -rf /usr/local/share/zsh
+        fi
+        sleep 3
+    else
+        echo "[!] $package is not installed."
+    fi
+done
+
 
 # REMOVE HACK NERD FONTS
 echo "-----------------------------------------------"
@@ -16,19 +38,6 @@ echo " > Removing Zsh"
 echo "-----------------------------------------------"
 rm -rf /usr/share/fonts/HackNerdFont*
 rm -rf /usr/share/fonts/*.md
-sleep 3
-
-# REMOVE ZSH
-echo "-----------------------------------------------"
-echo " > Removing Zsh"
-echo "-----------------------------------------------"
-sudo apt purge zsh -y
-sudo apt autoremove -y
-sudo rm -rf /usr/local/share/zsh
-sudo rm -f /usr/local/bin/zsh
-sudo apt purge zsh-common -y
-sudo apt autoremove -y
-sudo rm -rf /usr/local/share/zsh
 sleep 3
 
 # REMOVE POWERLEVEL10K

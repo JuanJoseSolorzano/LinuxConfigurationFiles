@@ -1,22 +1,17 @@
-# Configuration and Utility Bash Files
-This repository contains a collection of bash files that serve as configuration and utility scripts for various purposes. These files are designed to enhance the functionality and efficiency of your bash environment.
+<div align="center">
+
+# ⚡ BASH Configuration Files
+
+** BASH files Configuration**
+
+![Shell](https://img.shields.io/badge/Shell-Bash-4EAA25?style=for-the-badge&logo=gnubash&logoColor=white)
+![Zsh](https://img.shields.io/badge/Shell-Zsh-F15A24?style=for-the-badge&logo=zsh&logoColor=white)
+![Platform](https://img.shields.io/badge/Platform-Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
+
+</div>
 
 ---
-# install curl
- sudo apt update && sudo apt upgrade -y && sudo apt install curl
- sudo apt install locate -y
- sudo apt install git
-# install kitty terminal
- sudo apt install kitty -y
 
-# install Nerd Fonts
-curl -OL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/Hack.zip
-sudo 7z x Hack.zip -o/usr/share/fonts
-
-sudo apt install zsh -y
-sudo apt install zsh-syntax-highlighting
-sudo apt install zsh-autosuggestions
-sudo apt install lsd # icons
-git clone https://github.com/JuanJoseSolorzano/LinuxConfigurationFiles.git
-
-
+# BASH Configuration Files
+A collection of configuration files for BASH, including `.bashrc`, `.bash_profile`, and `.bash_aliases`. These files are designed to enhance the terminal experience with custom aliases, functions, and environment variables.
