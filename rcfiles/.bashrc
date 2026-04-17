@@ -80,7 +80,7 @@ function git_ps1 {
         showStatus="${YELLOW} None${ENDCOLOR}"
     fi
     if [[ $isMaster -eq 1 ]]; then
-        branchName="${branchName}!"
+        branchName=" ${branchName}!" #NOTE: The icons might look weird due to the terminal resolution, move them if needed.
     fi
     if [ -d .git ];then
         printf "<%s%s>" "$showStatus" "$branchName"
@@ -145,9 +145,9 @@ function getFolderName {
 function my_prompt {
     isRepo=$(git rev-parse --is-inside-work-tree 2>/dev/null)
     if [[ -z $isRepo ]]; then
-        export PS1="${CYAN}📂\w${ENDCOLOR}${MAGENTA}\$(git_ps1)${ENDCOLOR}/🐧> "
-    else
-        export PS1="${CYAN}📂\$(getFolderName)${ENDCOLOR}${MAGENTA}\$(git_ps1)${ENDCOLOR}/🐧> "
+        export PS1="${CYAN}📂 \w${ENDCOLOR}${MAGENTA}\$(git_ps1)${ENDCOLOR}/🐧> "
+    else #FIXME: print only the folder root
+        export PS1="${CYAN} \$(getFolderName)${ENDCOLOR}${MAGENTA}\$(git_ps1)${ENDCOLOR}/🐧> "
     fi
 }
 
