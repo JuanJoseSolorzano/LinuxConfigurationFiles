@@ -5,7 +5,7 @@
 #             including Powerlevel10k, Hack Nerd Fonts, and various dependencies.
 # mail: juanjose.solorzano.c@gmail.com
 
-packages=("git" "kitty"  "zsh" "zsh-syntax-highlighting" "zsh-common" "zsh-autosuggestions" "lsd")
+packages=("kitty" "zsh" "zsh-syntax-highlighting" "zsh-common" "zsh-autosuggestions" "lsd")
 
 for package in "${packages[@]}"; do
     if dpkg -s "$package" &>/dev/null; then
@@ -31,22 +31,20 @@ for package in "${packages[@]}"; do
     fi
 done
 
-
 # REMOVE HACK NERD FONTS
 echo "-----------------------------------------------"
 echo " > Removing Zsh"
 echo "-----------------------------------------------"
-rm -rf /usr/share/fonts/HackNerdFont*
-rm -rf /usr/share/fonts/*.md
+sudo rm -rf /usr/share/fonts/HackNerdFont*
+sudo rm -rf /usr/share/fonts/*.md
 sleep 3
-
 # REMOVE POWERLEVEL10K
 echo "-----------------------------------------------"
 echo " > Removing PowerLevel10K"
 echo "-----------------------------------------------"
-rm -rf ~/powerlevel10k
-rm -f ~/.zshrc
-rm -f ~/.p10k.zsh
+sudo rm -rf ~/powerlevel10k
+sudo rm -f ~/.zshrc
+sudo rm -f ~/.p10k.zsh
 sleep 3
 
 echo "***************************************************************"
