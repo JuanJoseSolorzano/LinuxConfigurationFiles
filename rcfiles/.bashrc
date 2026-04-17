@@ -7,7 +7,7 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 END_COLOR='\033[0m'
 # change to ~ directory.
-source ~/.myconf #environment configuration.
+# source ~/.myconf #environment configuration.
 
 ENDCOLOR='\[\e[0m\]'
 BLACK='\[\e[0;30m\]'
@@ -29,6 +29,8 @@ BWHITE='\[\e[1;37m\]'
 
 if [ -f /etc/profile.d/git-prompt.sh ]; then
   . /etc/profile.d/git-prompt.sh
+elif [ -f /etc/bash_completion.d/git-prompt ]; then
+    . /etc/bash_completion.d/git-prompt
 elif [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
   . /usr/share/git-core/contrib/completion/git-prompt.sh
 elif [ -f ~/.git-prompt.sh ]; then
@@ -117,19 +119,10 @@ function repo {
         return 1
     fi
     declare -A repos
-    repos["G90"]="https://github.vitesco.io/EnDS-Test-Automation/VT.PRJ.GM.G90.CVR"
-    repos["G80"]="https://github.vitesco.io/EnDS-Test-Automation/VT.PRJ.GM.G80.CVR"
-    repos["G70"]="https://github.vitesco.io/EnDS-Test-Automation/VT.PRJ.GM.G70.CVR"
-    repos["FC1"]="https://github.vitesco.io/EnDS-Test-Automation/VT.PRJ.FORD.FC1.REGR_TEST"
-    repos["FB0"]="https://github.vitesco.io/EnDS-Test-Automation/VT.PRJ.FORD.FB0.REGR_TEST"
-    repos["FB1"]="https://gitlab-ec-na.aws1583.vitesco.io/ec/se/aet/tas/ford/fofb0_ta_suite"
-    repos["G55"]="https://github.vitesco.io/EnDS-Test-Automation/VT.PRJ.GM.G55.FAST"
-    repos["G56"]="https://github.vitesco.io/EnDS-Test-Automation/VT.PRJ.GM.G56.VVMAL"
-    repos["CONTEST"]="https://github.vitesco.io/EnDS-Test-Automation/VT.GEN.TOOL.CONTEST"
-    repos["FC1_"]="https://github.vitesco.io/uiv06924/fo_fc1_ta_suite"
-    repos["H02"]="https://github.vitesco.io/EnDS-Test-Automation/vt.prj.ford.foh02.sys_test"
-    repos["myrecorder"]="https://github.vitesco.io/uiv06924/MyRecorder"
-    repos["AUTOCNF"]="https://github.vitesco.io/EnDS-Test-Automation/VT.PRJ.AUTO_CNF_TOOL"
+    repos["a"]=""
+    repos["b"]=""
+    repos["c"]=""
+    repos["d"]=""
     echo "${repos["G80"]}"
 }
 
