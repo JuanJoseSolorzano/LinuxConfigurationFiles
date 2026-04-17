@@ -59,6 +59,8 @@ alias l='lsd --group-dirs=first'
 alias lla='lsd -lha --group-dirs=first'
 alias ls='lsd --group-dirs=first'
 alias cat='batcat'
+alias catn='/usr/bin/cat'
+alias delete="rm -rf"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -102,21 +104,21 @@ function fzf-lovely(){
 
 	if [ "$1" = "h" ]; then
 		fzf -m --reverse --preview-window down:20 --preview '[[ $(file --mime {}) =~ binary ]] &&
- 	                echo {} is a binary file ||
-	                 (bat --style=numbers --color=always {} ||
-	                  highlight -O ansi -l {} ||
-	                  coderay {} ||
-	                  rougify {} ||
-	                  cat {}) 2> /dev/null | head -500'
+ 	               echo {} is a binary file ||
+	                (bat --style=numbers --color=always {} ||
+	                 highlight -O ansi -l {} ||
+	                 coderay {} ||
+	                 rougify {} ||
+	                 cat {}) 2> /dev/null | head -500'
 
 	else
-	        fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
-	                         echo {} is a binary file ||
-	                         (bat --style=numbers --color=always {} ||
-	                          highlight -O ansi -l {} ||
-	                          coderay {} ||
-	                          rougify {} ||
-	                          cat {}) 2> /dev/null | head -500'
+	       fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
+	                        echo {} is a binary file ||
+	                        (bat --style=numbers --color=always {} ||
+	                         highlight -O ansi -l {} ||
+	                         coderay {} ||
+	                         rougify {} ||
+	                         cat {}) 2> /dev/null | head -500'
 	fi
 }
 

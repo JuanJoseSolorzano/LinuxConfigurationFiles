@@ -75,7 +75,7 @@ function git_ps1 {
     elif [[ $readyToCommit -eq 1 ]]; then
         showStatus=""
     elif [[ $readyToPush -eq 1 ]]; then
-        showStatus=""
+        showStatus=" "
     else
         showStatus="${YELLOW} None${ENDCOLOR}"
     fi
