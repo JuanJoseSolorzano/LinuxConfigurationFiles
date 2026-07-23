@@ -52,6 +52,8 @@ source /home/juanjose/powerlevel10k/powerlevel10k.zsh-theme
 
 PATH=/root/.local/bin:/snap/bin:/usr/sandbox/:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/share/games:/usr/local/sbin:/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
+export LS_COLORS="di=01;34:fi=00:ln=01;36:ex=01;32:tw=00:ow=00:st=00:su=00:sg=00:ca=00"
+
 # Manual aliases
 alias ll='lsd -lh --group-dirs=first'
 alias la='lsd -a --group-dirs=first'
@@ -61,6 +63,7 @@ alias ls='lsd --group-dirs=first'
 alias cat='batcat'
 alias catn='/usr/bin/cat'
 alias delete="rm -rf"
+alias nvrun=""__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -104,21 +107,21 @@ function fzf-lovely(){
 
 	if [ "$1" = "h" ]; then
 		fzf -m --reverse --preview-window down:20 --preview '[[ $(file --mime {}) =~ binary ]] &&
- 	               echo {} is a binary file ||
-	                (bat --style=numbers --color=always {} ||
-	                 highlight -O ansi -l {} ||
-	                 coderay {} ||
-	                 rougify {} ||
-	                 cat {}) 2> /dev/null | head -500'
+ 	              echo {} is a binary file ||
+	               (bat --style=numbers --color=always {} ||
+	                highlight -O ansi -l {} ||
+	                coderay {} ||
+	                rougify {} ||
+	                cat {}) 2> /dev/null | head -500'
 
 	else
-	       fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
-	                        echo {} is a binary file ||
-	                        (bat --style=numbers --color=always {} ||
-	                         highlight -O ansi -l {} ||
-	                         coderay {} ||
-	                         rougify {} ||
-	                         cat {}) 2> /dev/null | head -500'
+	      fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
+	                       echo {} is a binary file ||
+	                       (bat --style=numbers --color=always {} ||
+	                        highlight -O ansi -l {} ||
+	                        coderay {} ||
+	                        rougify {} ||
+	                        cat {}) 2> /dev/null | head -500'
 	fi
 }
 
@@ -126,6 +129,13 @@ function rmk(){
 	scrub -p dod $1
 	shred -zun 10 -v $1
 }
+
+export COPILOT_PROVIDER_TYPE=anthropic
+export COPILOT_PROVIDER_BASE_URL=https://api.deepseek.com/anthropic
+export COPILOT_PROVIDER_API_KEY=sk-287df4f0e78a4781ab2f437419d708e0
+export COPILOT_MODEL=deepseek-v4-pro
+export COPILOT_PROVIDER_MAX_PROMPT_TOKENS=840000
+export COPILOT_PROVIDER_MAX_OUTPUT_TOKENS=128000
 
 # Finalize Powerlevel10k instant prompt. Should stay at the bottom of ~/.zshrc.
 (( ! ${+functions[p10k-instant-prompt-finalize]} )) || p10k-instant-prompt-finalize
