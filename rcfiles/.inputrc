@@ -1,0 +1,62 @@
+# Disable bell
+set bell-style none
+
+# Case-insensitive completion
+set completion-ignore-case on
+
+# Show all matches immediately
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+
+# Mark directories with /
+set mark-directories on
+
+# Append slash to completed directories
+set mark-symlinked-directories on
+
+# Better completion display
+set visible-stats on
+set colored-stats on
+
+# Do not require exact case
+set completion-map-case on
+
+# Ignore duplicate history lines
+set history-preserve-point on
+
+# Use TAB for menu completion
+TAB: menu-complete
+
+# Shift+TAB reverse menu completion
+"\e[Z": menu-complete-backward
+
+# Ctrl+Left / Ctrl+Right word movement
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+# Alt+Left / Alt+Right word movement
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
+
+# Home / End
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line
+
+# Delete key
+"\e[3~": delete-char
+
+# Page Up / Page Down search history by prefix
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+# Up / Down search history by typed prefix
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# Ctrl+Backspace delete previous word
+"\C-H": backward-kill-word
+
+# Ctrl+Delete delete next word
+"\e[3;5~": kill-word
