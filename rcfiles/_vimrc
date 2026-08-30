@@ -1,0 +1,94 @@
+" =========================
+" Basic UI
+" =========================
+set nocompatible
+syntax on
+filetype plugin indent on
+set number
+set ruler
+set showcmd
+set cursorline
+set hidden
+set wildmenu
+set wildmode=longest:full,full
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+set mouse=a
+set clipboard=unnamedplus
+
+" =========================
+" Indentation
+" =========================
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+set smartindent
+
+" =========================
+" Encoding / line endings
+" =========================
+set encoding=utf-8
+set fileencoding=utf-8
+set fileformats=unix,dos
+
+" =========================
+" Search / editing
+" =========================
+set backspace=indent,eol,start
+set wrap
+set linebreak
+set textwidth=0
+set formatoptions+=j
+
+" =========================
+" Split behavior
+" =========================
+set splitbelow
+set splitright
+
+" =========================
+" Better command line
+" =========================
+set cmdheight=1
+set laststatus=2
+
+" =========================
+" Colors
+" =========================
+if has("termguicolors")
+  set termguicolors
+endif
+colorscheme desert
+
+" =========================
+" Key mappings
+" =========================
+let mapleader=" "
+
+
+nnoremap <leader>w :w<CR>
+nnoremap <leader>q :q<CR>
+nnoremap <leader>h :nohlsearch<CR>
+nnoremap <leader>e :Explore<CR>
+
+" Save with Ctrl+S
+nnoremap <C-s> :w<CR>
+inoremap <C-s> <Esc>:w<CR>a
+
+" Move between splits
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" =========================
+" Windows-specific paths
+" =========================
+if has("win32") || has("win64")
+  set shell=pwsh.exe
+  set shellcmdflag=-NoLogo\ -NoProfile\ -Command
+endif
+
